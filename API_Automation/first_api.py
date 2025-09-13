@@ -1,9 +1,11 @@
 import requests
 import json
 
-get_resp = requests.get(url="https://reqres.in/api/users?page=2")
-data = get_resp.json()
-json_resp = json.dumps(data, indent= 4
-                       )
-# print(get_resp.json())
-print(json_resp)
+insert_record = {
+    "name": "ganesh",
+    "job": "IT"
+}
+headers = {"content-type":"application/json","x-api-key": "reqres-free-v1"}
+post_resp = requests.post(url="https://reqres.in/api/users" , json=insert_record, headers = headers)
+print(post_resp.status_code)
+print(json.dumps(post_resp.json()))
